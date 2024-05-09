@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Docentes</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: violet; /* Fondo violeta */
+            padding-top: 20px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Color de fondo semi-transparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .page-title {
+            background-color: black;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            background-color: violet;
+            border-color: black;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            background-color: #000;
+            border-color: #000;
+            color: #fff; 
+        }
+
+        .btn-info.btn-sm.editar {
+            background-color: #000; 
+            color: #fff; 
+            border-color: #000; 
+        }
+
+        .btn-info.btn-sm.editar:hover {
+            background-color: #dc3545; 
+            border-color: #dc3545; 
+        }
+
+        .btn-danger.btn-sm.borrar {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-danger.btn-sm.borrar:hover {
+            background-color: #000;
+            border-color: #000;
+            color: #dc3545; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="page-title mb-4">CRUD de Docentes</h1>
+        <form id="docenteForm">
+            <input type="hidden" id="docente_id" value="-1">
+            <div class="form-group">
+                <label for="docente_apellido">Apellido:</label>
+                <input type="text" class="form-control" id="docente_apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="docente_nombre">Nombre:</label>
+                <input type="text" class="form-control" id="docente_nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="docente_mail">Correo electrónico:</label>
+                <input type="email" class="form-control" id="docente_mail" required>
+            </div>
+            <div class="form-group">
+                <label for="docente_cumple">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" id="docente_cumple">
+            </div>
+            <div class="form-group">
+                <label for="docente_celular">Número de celular:</label>
+                <input type="tel" class="form-control" id="docente_celular">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Correo electrónico</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Número de celular</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="docentesTable">
+               
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app1.js"></script>
+    <script src="Docente.js"></script>
+    <script src="Docentes.js"></script>
+
+ 
+</body>
+
+</html>
