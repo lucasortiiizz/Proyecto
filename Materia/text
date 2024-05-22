@@ -1,0 +1,72 @@
+
+class Materias {
+    constructor() {
+        // Al inicializar la clase, obtenemos los datos almacenados en localStorage
+        let data = localStorage.getItem('materias');
+        // Si no hay datos, inicializamos this.datos como un array vacío
+        if (!data) {
+            this.datos = [];
+        } else {
+            // Si hay datos, los parseamos desde JSON a un array y los asignamos a this.datos
+            this.datos = JSON.parse(data); //recorrer
+        }
+    }
+
+    // Método para obtener el ID máximo actualmente utilizado en las materias almacenadas
+    getMaxId() {
+        if (this.datos.length === 0) {
+            return 0; // Si no hay materias, el máximo ID es 0
+        } else {
+            let idmax = -1;
+            // Buscamos el ID máximo recorriendo todas las materias
+            this.datos.forEach(m => {
+                if (m.mate_id > idmax) {
+                    idmax = m.mate_id;
+                }
+            });
+            return idmax;
+        }
+    }
+
+    // Método para agregar una nueva materia
+    agregar(materia) {
+        // Asignamos un nuevo ID sumando 1 al máximo ID actual
+        materia.mate_id = this.getMaxId() + 1;
+        // Agregamos la materia al array this.datos
+        this.datos.push(materia);
+        // Guardamos los datos actualizados en localStorage
+        this.persistir();
+    }
+
+    // Método para actualizar una materia existente
+    actualizar(materia) {
+        // Buscamos la materia por su ID en this.datos
+        const index = this.datos.findIndex(m => m.mate_id === materia.mate_id);
+        if (index !== -1) {
+            // Si la materia existe, actualizamos sus datos
+            this.datos[index] = materia;
+            // Guardamos los datos actualizados en localStorage
+            this.persistir();
+        }
+    }
+
+    // Método para borrar una materia por su ID
+    borrar(id) {
+        // Filtramos el array this.datos para eliminar la materia con el ID proporcionado
+        this.datos = this.datos.filter(materia => materia.mate_id !== id);
+        // Guardamos los datos actualizados en localStorage
+        this.persistir();
+    }
+
+    // Método para obtener una materia por su ID
+    obtenerPorId(id) {
+        // Buscamos y devolvemos la materia con el ID proporcionado
+        return this.datos.find(materia => materia.mate_id === id);
+    }
+
+    // Método para guardar los datos de materias en localStorage
+    persistir() {
+        // Convertimos this.datos a formato JSON y lo guardamos en localStorage bajo la clave 'materias'
+        localStorage.setItem('materias', JSON.stringify(this.datos));
+    }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>CRUD de Materias</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: violet; /* Fondo violeta */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Color de fondo semi-transparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        #materiaForm {
+            background-color: #f8f9fa; /* Color de fondo del formulario */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="page-title">CRUD de Materias</h1>
+        <form id="materiaForm">
+            <input type="hidden" id="materia_id">
+            <div class="form-group">
+                <label for="materia_carrera">Carrera:</label>
+                <select class="form-control" id="materia_carrera" required>
+                    <option value="1">FCHJS</option>
+                    <option value="2">ISEDE</option>
+                    <option value="3">FACAT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="materia_docente">Docente:</label>
+                <select class="form-control" id="materia_docente" required>
+                    <!-- Opciones de docentes se cargarán dinámicamente con JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="materia_nombre">Nombre:</label>
+                <input type="text" class="form-control" id="materia_nombre" minlength="3" maxlength="60" required>
+            </div>
+            <div class="form-group">
+                <label for="materia_codigo">Código:</label>
+                <input type="text" class="form-control" id="materia_codigo" required>
+            </div>
+            <div class="form-group">
+                <label for="materia_anho">Año:</label>
+                <input type="date" class="form-control" id="materia_anho"  required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mr-2">Guardar</button>
+                <button type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+            </div>
+        </form>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Carrera</th>
+                    <th>Docente</th>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Año</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="materiasTable">
+               
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="materias.js"></script>
+    <script src="app.js"></script>
+    <script src="Materia.js"></script>
+    <script src="Docente.js"></script>
+    <script src="Docentes.js"></script>
+</body>
+</html>
